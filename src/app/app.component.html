@@ -1,1 +1,21 @@
-<div>Hello World</div>
+<h1>Get Github Users</h1>
+<div class="align-btns">
+  <button (click)="loadNextUsersList()" class="btn">Load next 30</button>
+  <button type="button" (click)="autoLoadUsersList()" class="btn">
+    {{ isTurnOffAutoLoad ? "Turn On Auto load" : "Turn off Auto Load" }}
+  </button>
+</div>
+<div *ngFor="let eachUser of usersList">
+  <div class="card">
+    <img
+      *ngIf="eachUser?.id % 2 === 0"
+      [src]="eachUser?.avatar_url"
+      alt="Loading..."
+      class="img-avtar"
+    />
+    <div>
+      <li>Username : {{ eachUser?.login }}</li>
+      <li *ngIf="eachUser?.id % 2 !== 0">{{ eachUser?.avatar_url }}</li>
+    </div>
+  </div>
+</div>
